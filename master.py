@@ -1,6 +1,6 @@
 import os
 import numpy as np
-from mnist import MNIST as mn
+# from mnist import MNIST as mn
 from matplotlib import pyplot as plt
 import matplotlib.image as mpimg
 from neuralNetwork import *
@@ -19,15 +19,15 @@ print('loading data')
 print('loaded data')
 
 nn = neuralNetwork(name="demo",
-                   epochs=10,
+                   epochs=2,
                    batchSize=32,
                    alpha=0.05,
-                   L2=0.00,
+                   L2=0.0,
                    L1=0,
-                   layerSizes=[784, 5, 10],
-                   actFn=fns.sigmoid,
-                   costFn=fns.crossEntropy,
-                   lastLayerFn=fns.softmax,
+                   layerSizes=[784, 100, 10],
+                   actFn=fns.identity,
+                   costFn=fns.meanSquare,
+                   lastLayerFn=fns.identity,
                    dropout=0,
                    batchNorm=False)
 

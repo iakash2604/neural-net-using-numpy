@@ -168,7 +168,7 @@ class neuralNetwork:
             cy_ = np.copy(y_)
             batches = int(t/self.batchSize)
             for j in range(batches):
-                print(epoch, batches-j-1)
+                # print(epoch, batches-j-1)
                 batchImage = cx[:self.batchSize]
                 batchLabel = cy_[:self.batchSize]
                 cx = cx[self.batchSize:]

@@ -1,5 +1,5 @@
 import numpy as np
-from mnist import MNIST as mn
+# from mnist import MNIST as mn
 import os
 import pickle
 import numpy as np
