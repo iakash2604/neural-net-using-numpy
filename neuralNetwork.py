@@ -5,7 +5,8 @@ import pickle
 from matplotlib import pyplot as plt
 
 class neuralNetwork:
-    def __init__(self, epochs, batchSize, alpha, L2, L1, layerSizes, actFn, costFn, lastLayerFn, dropout, batchNorm):
+    def __init__(self, name, epochs, batchSize, alpha, L2, L1, layerSizes, actFn, costFn, lastLayerFn, dropout, batchNorm):
+        self.name = name
         self.layerSizes = layerSizes
         self.numHidden = len(layerSizes)-2
         self.epochs = epochs
@@ -261,7 +262,7 @@ class neuralNetwork:
         return [accuracy/t, cost/t]
 
     def saveModel(self):
-        file = open("expLogs.txt","a")
+        file = open(self.name+"expLogs.txt","a")
         file.write("Layersizes: "+ str(self.layerSizes))
         file.write("\n")
         file.write("Batch size: "+ str(self.batchSize))
@@ -290,8 +291,8 @@ class neuralNetwork:
         file.write("\n")
         file.close()
 
-        saveMatrix(self.weightMatrices, 'weightMatrices')
-        saveMatrix(self.biasMatrices, 'biasMatrices')
+        saveMatrix(self.weightMatrices, self.name+'weightMatrices')
+        saveMatrix(self.biasMatrices, self.name+'biasMatrices')
         return None
 
     def loadModel(self, weightsFile, biasFile):
